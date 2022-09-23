@@ -1,4 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.toast-success {
+  background: #0fdb00;
+}
+
+.toast-error {
+  background: #ff0900;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+.mat-dialog-content {
+  overflow-x: hidden !important;
+}
+
+body {
+  background: #e9ebee;
+}
