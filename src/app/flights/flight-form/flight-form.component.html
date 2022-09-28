@@ -1,43 +1,45 @@
-<form>
+<form [formGroup] ="form">
   <div class="row">
     <div class="col-sm-8">
       <mat-form-field>
-        <input matInput placeholder="code">
+        <input matInput formControlName="code" placeholder="Code">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="code">
+        <input matInput formControlName="origin" placeholder="Origin">
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Destination">
+        <input matInput formControlName="destination"  placeholder="Destination">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Departure Time">
+        <input matInput formControlName="departureTime" placeholder="Departure Time">
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Return Time">
+        <input matInput formControlName="returnTime" placeholder="Return Time">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-8">
-      <textarea matInput placeholder="Additional Information"></textarea>
+      <textarea matInput formControlName="additionalInformation" placeholder="Additional Information"></textarea>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <mat-checkbox>With SK Discount</mat-checkbox>
+      <mat-checkbox formControlName="withSKPlanesDiscount" >With SK Discount</mat-checkbox>
     </div>
   </div>
 </form>
+
+<pre>{{form.value | json}}</pre>

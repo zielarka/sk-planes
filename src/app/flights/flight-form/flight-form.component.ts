@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-flight-form',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flight-form.component.css']
 })
 export class FlightFormComponent implements OnInit {
+  form: FormGroup;
 
-  constructor() { }
+  constructor(private formBulider: FormBuilder) { }
 
   ngOnInit() {
+    this.bulidForm();
+  }
+
+  private bulidForm() {
+    this.form = this.formBulider.group({
+      code: '',
+      origin: '',
+      destination: '',
+      departureTime: '',
+      returnTime: '',
+      additionalInformation: '',
+      withSKPlanesDiscount: false
+
+    })
   }
 
 }
