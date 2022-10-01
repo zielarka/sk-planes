@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   entryComponents: [NewFlightComponent],
-  exports: [FlightsComponent,FlightCardComponent],
+  exports: [FlightsComponent],
   declarations: [FlightsComponent,FlightCardComponent,NewFlightComponent,FlightFormComponent]
 })
 export class FlightsModule { }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, SnapshotAction } from '@angular/fire/compat/database';
 import { map, Observable } from 'rxjs';
+import { Flight } from 'src/app/models/flight.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -19,6 +20,10 @@ export class FlightsService {
       .pipe(
         map((response) => response.map((flight) => this.assingKey(flight)))
       );
+  }
+
+  addFlights(flights: Flight) {
+    return this.db.list<Flight>(this.API_URL).push(flights);
   }
 
   private assingKey(flight:any) {

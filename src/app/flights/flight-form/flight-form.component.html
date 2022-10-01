@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-sm-8">
       <mat-form-field>
-        <input matInput formControlName="code" placeholder="Code">
+        <input matInput formControlName="code" placeholder="Code" #codeInput>
+        <mat-error *ngif="form.get('code').hasError('requaried')">Code is requaried</mat-error>
+        <mat-error *ngif="form.get('code').hasError('minlength')">Code is requaried</mat-error>
+        <mat-error *ngif="form.get('code').hasError('maxlength')">Code is requaried</mat-error>
+        <mat-hint align="end">{{ codeInput.value.length }} / 10</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -40,23 +44,23 @@
       <mat-checkbox formControlName="withSKPlanesDiscount" >With SK Discount</mat-checkbox>
     </div>
   </div>
-  <div class="crew-container shadow" *ngFor="let crewMember of [1,2,3];index as index" >
+  <div formArrayName="crew" class="crew-container shadow" *ngFor="let crewMember of crew.controls ;index as index" >
     <div class="row crew-header">
       <div class="col">
         <span>Crew Member - {{ index + 1 }}</span>
-        <mat-icon class="float-end">delete_forever</mat-icon>
+        <mat-icon class="float-end" (click)="removeCrewMember(index)">delete_forever</mat-icon>
       </div>
     </div>
-      <div class="row">
+      <div class="row" [formGroupName]="index">
         <div class="col-sm-5">
-          <mat-form-field>
-            <input matInput placeholder="Name" >
+          <mat-form-field  >
+            <input matInput formControlName="name" placeholder="Name" >
           </mat-form-field>
         </div>
         <div class="col-sm-4">
           <mat-form-field>
-            <mat-select placeholder="Job" >
-              <mat-option *ngFor="let x of ['stewardess','pilot','mechanic  ']">{{ x }}</mat-option>
+            <mat-select formControlName="job" placeholder="Job" >
+              <mat-option *ngFor="let job of jobs" [value]="job.value">{{ job.label }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -64,7 +68,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <button mat-raised-button color="primary">Add crew member</button>
+      <button mat-raised-button color="primary" (click)="addCrewMember()">Add crew member</button>
     </div>
   </div>
 </form>
