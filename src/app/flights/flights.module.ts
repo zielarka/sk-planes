@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { NewFlightComponent } from './new-flight/new-flight.component';
 import { FlightFormComponent } from './flight-form/flight-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetalisComponent } from './detalis/detalis.component';
 
 @NgModule({
   imports: [
@@ -18,8 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [NewFlightComponent],
+  entryComponents: [NewFlightComponent,DetalisComponent],
   exports: [FlightsComponent],
-  declarations: [FlightsComponent,FlightCardComponent,NewFlightComponent,FlightFormComponent]
+  declarations: [FlightsComponent,FlightCardComponent,NewFlightComponent,FlightFormComponent,DetalisComponent]
 })
 export class FlightsModule { }
