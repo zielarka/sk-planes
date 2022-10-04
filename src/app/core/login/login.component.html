@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<div class="row justify-content-center login-container">
+  <div class="col-sm-4 shadow login-content">
+    <img src="./assets/images/logo_sk.png" class="logo">
+    <h3>Login</h3>
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Email" [(ngModel)]="credencials.email" required>
+      <mat-error>Email is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Password" [(ngModel)]="credencials.password" required>
+      <mat-error>Password is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button (click)="login()" color="primary">LOG IN</button>
+    <p>You don't have an account?</p>
+    <button routerLink="/registration" mat-raised-button color="accent">REGISTER</button>
+  </div>
+</div>

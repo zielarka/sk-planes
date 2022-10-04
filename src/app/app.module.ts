@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { AngularFireModule} from '@angular/fire/compat'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FlightsModule } from './flights/flights.module';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FlightsModule } from './flights/flights.module';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     MaterialModule,
+    AngularFireAuthModule,
     CoreModule,
     AngularFireDatabaseModule,
     FlightsModule
