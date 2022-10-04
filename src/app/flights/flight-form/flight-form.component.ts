@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Crew } from 'src/app/models/flight.model';
+import { Crew, Flight } from 'src/app/models/flight.model';
 
 @Component({
   selector: 'app-flight-form',
@@ -8,6 +8,7 @@ import { Crew } from 'src/app/models/flight.model';
   styleUrls: ['./flight-form.component.scss']
 })
 export class FlightFormComponent implements OnInit {
+  @Input() editMode = false;
   form: FormGroup;
   jobs = [
     { label:'Stwaredess', value: 'stwaredess'},
@@ -23,6 +24,12 @@ export class FlightFormComponent implements OnInit {
     this.bulidForm();
   }
 
+  setFlight(flight: Flight) {
+    const {key, ...formData} = flight;
+    this.form.patchValue(formData);
+    formData.crew.forEach(crewMember => this.addCrewMember(crewMember));
+  }
+
   get crew() {
     return this.form.get('crew') as FormArray;
   }
@@ -31,15 +38,15 @@ export class FlightFormComponent implements OnInit {
     this.crew.removeAt(i);
   }
 
-  addCrewMember() {
-    this.crew.push(this.bulidCrewMember());
+  addCrewMember(crewMember?:Crew) {
+    this.crew.push(this.bulidCrewMember(crewMember));
     console.log(this.form);
   }
 
-  private bulidCrewMember() {
+  private bulidCrewMember(crewMember: Crew = {} as Crew) {
      return this.formBulider.group({
-      name: '',
-      job: ''
+      name: crewMember.name || '',
+      job: crewMember.job || ''
      });
   }
 
@@ -52,7 +59,7 @@ export class FlightFormComponent implements OnInit {
       code: ['',{ validators: [Validators.required, Validators.minLength(4), Validators.maxLength(7)]}],
       additionalInformation: '',
       withSKPlanesDiscount: false,
-      crew: this.formBulider.array([this.bulidCrewMember()])
+      crew: this.formBulider.array( this.editMode ? [] : [this.bulidCrewMember()])
     })
   }
 

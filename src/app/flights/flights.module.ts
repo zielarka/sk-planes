@@ -9,6 +9,7 @@ import { NewFlightComponent } from './new-flight/new-flight.component';
 import { FlightFormComponent } from './flight-form/flight-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetalisComponent } from './detalis/detalis.component';
+import { EditFlightComponent } from './edit-flight/edit-flight.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { DetalisComponent } from './detalis/detalis.component';
   ],
   entryComponents: [NewFlightComponent,DetalisComponent],
   exports: [FlightsComponent],
-  declarations: [FlightsComponent,FlightCardComponent,NewFlightComponent,FlightFormComponent,DetalisComponent]
+  declarations: [FlightsComponent,FlightCardComponent,NewFlightComponent,FlightFormComponent,DetalisComponent,EditFlightComponent]
 })
 export class FlightsModule { }

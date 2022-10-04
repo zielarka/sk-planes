@@ -13,7 +13,12 @@ export class FlightsService {
 
   constructor(private db: AngularFireDatabase) {}
 
-  getFlights(): Observable<any[]> {
+  getFlight(key:string): Observable<Flight> {
+    return this.db.object<Flight>(`${this.API_URL}/${key}`).snapshotChanges()
+      .pipe(map(flight => this.assingKey(flight)));
+  }
+
+  getFlights(): Observable<Flight[]> {
     return this.db
       .list<any>(this.API_URL)
       .snapshotChanges()
