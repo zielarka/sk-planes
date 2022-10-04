@@ -2,11 +2,14 @@
   <div class="col-9">
     <h3>Edit flight <strong>{{ flight?.code}}</strong> detalis </h3>
   </div>
+  <div class="col-3">
+    <mat-icon id="remove-btn" (click)="removeFlight()">delete_forever</mat-icon>
+  </div>
 </div>
 <app-flight-form #flightForm [editMode]="true" ></app-flight-form>
 <div class="row">
   <div class="col text-right">
-    <button mat-raised-button>RESET</button>
-    <button mat-raised-button color="primary">SAVE</button>
+    <button id="reset-btn"  mat-raised-button>RESET</button>
+    <button class="float-end"  mat-raised-button color="primary">SAVE</button>
   </div>
 </div>

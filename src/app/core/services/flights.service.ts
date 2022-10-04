@@ -31,6 +31,10 @@ export class FlightsService {
     return this.db.list<Flight>(this.API_URL).push(flights);
   }
 
+  removeFlight(key:string) {
+    return this.db.object(`${this.API_URL}/${key}`).remove();
+  }
+
   private assingKey(flight:any) {
     return {...flight.payload.val(), key: flight.key}
   }
