@@ -26,4 +26,10 @@ export class LoginComponent {
       .catch(error => this.toast.open(error.message));
   }
 
+  register() {
+    this.authService.register(this.credencials)
+      .then(user => this.toast.open('Account created, please log in!', '', {panelClass: 'toast-success'}))
+      .catch(error => this.toast.open(error.message,'',{panelClass: 'toast-error'}));
+  }
+
 }
